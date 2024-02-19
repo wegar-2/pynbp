@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import numpy as np
 
-from pynbp.interest_rates_extractor import InterestRatesExtractor
+from pynbp.interest_rates import InterestRatesExtractor
 
 
 class TestInterestRatesExtractor(unittest.TestCase):
