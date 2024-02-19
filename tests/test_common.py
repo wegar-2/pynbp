@@ -11,9 +11,9 @@ def test_get_default_dates_range():
 
 
 def test_split_dates_range_into_smaller_chunks():
-    l = split_dates_range_into_smaller_chunks(
+    list_ = split_dates_range_into_smaller_chunks(
         start=date(2019, 1, 1), end=date(2022, 9, 30))
-    assert isinstance(l, list)
-    assert len(l) == 4
-    assert l[0][0] == date(2019, 1, 1)
-    assert l[2][1] == date(2021, 12, 31)
+    assert isinstance(list_, list)
+    assert len(list_) == 4
+    assert list_[0][0] == date(2019, 1, 1)
+    assert list_[2][1] == date(2021, 12, 31)

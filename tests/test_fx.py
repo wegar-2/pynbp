@@ -1,22 +1,14 @@
-import unittest
 import pandas as pd
 import datetime as dt
-from pynbp.fx import FxExtractor
+from pynbp.fx import get_fx_rates_for_currency
+from pynbp.currency import Currency
 
 
-class TestNbpFxRatesExtractor(unittest.TestCase):
-
-    def test_get_fx_rates_for_currency_usd(self):
-        df = extractor.get_fx_rates_for_currency(
-            iso_code="usd",
-            start=dt.date(2021, 3, 13),
-            end=dt.date(2022, 4, 15)
-        )
-        self.assertIsInstance(df, pd.DataFrame)
-        self.assertEqual(df.shape[1], 2)
-        self.assertEqual(df.iloc[10, 1], 3.957)
-        print("done")
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_get_fx_rates_for_currency_usd():
+    data = get_fx_rates_for_currency(
+        ccy=Currency.USD,
+        start=dt.date(2021, 3, 13), end=dt.date(2022, 4, 15)
+    )
+    assert isinstance(data, pd.DataFrame)
+    assert data.shape[1] == 2
+    assert data.iloc[10, 1] == 3.957
