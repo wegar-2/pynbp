@@ -1,4 +1,4 @@
-from pynbp.base_extractor import BaseExtractor
+from pynbp.common import BaseExtractor
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 

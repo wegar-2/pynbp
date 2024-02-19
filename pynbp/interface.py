@@ -1,8 +1,6 @@
 from datetime import date
-
 import pandas as pd
-
-from pynbp.fx_extractor import FxExtractor
+from pynbp.fx import FxExtractor
 from pynbp.interest_rates_extractor import InterestRatesExtractor
 from pynbp.gold_price_extractor import GoldPriceExtractor
 

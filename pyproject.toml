@@ -1,0 +1,25 @@
+[project]
+name = "pynbp"
+version = "1.0.0"
+description = """
+tidy downloading of National Bank of Poland interest rates,
+FX rates and gold price data
+"""
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["NBP", "FX", "PLN"]
+authors = [
+  {name = "Artur Wegrzyn", email = "awegrzyn17@gmail.com" }
+]
+maintainers = [
+  {name = "Artur Wegrzyn", email = "awegrzyn17@gmail.com" }
+]
+dependencies = [
+  "numpy", "pandas", "urllib3", "requests", "pytz", "certifi",
+  "charset-normalizer", "idna", "python-dateutil", "six", "tzdata",
+  "loguru"
+]
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"

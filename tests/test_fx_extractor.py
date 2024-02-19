@@ -3,7 +3,7 @@ import unittest
 import pandas as pd
 import datetime as dt
 
-from pynbp.fx_extractor import FxExtractor
+from pynbp.fx import FxExtractor
 
 
 class TestNbpFxRatesExtractor(unittest.TestCase):
