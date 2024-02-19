@@ -1,13 +1,12 @@
+from datetime import date
 import pandas as pd
-import datetime as dt
 from pynbp.fx import get_fx_rates_for_currency
 from pynbp.currency import Currency
 
 
 def test_get_fx_rates_for_currency_usd():
     data = get_fx_rates_for_currency(
-        ccy=Currency.USD,
-        start=dt.date(2021, 3, 13), end=dt.date(2022, 4, 15)
+        ccy=Currency.USD, start=date(2021, 3, 13), end=date(2022, 4, 15)
     )
     assert isinstance(data, pd.DataFrame)
     assert data.shape[1] == 2

@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 from pynbp.interest_rates import get_interest_rates_table
 
 

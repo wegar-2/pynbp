@@ -1,7 +1,7 @@
-from pynbp.common import (get_default_dates_range,
-                          split_dates_range_into_smaller_chunks)
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
+from pynbp.common import (get_default_dates_range,
+                          split_dates_range_into_smaller_chunks)
 
 
 def test_get_default_dates_range():
