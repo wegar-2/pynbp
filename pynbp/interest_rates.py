@@ -5,6 +5,8 @@ import requests
 import numpy as np
 import pandas as pd
 
+__all__ = ["get_interest_rates_table"]
+
 
 RATES_NAMES_DICT: dict[str, str] = {
     "dys": "discount_rate", "dep": "deposit_rate", "lom": "lombard_rate",
@@ -56,8 +58,3 @@ def data_dict_to_dataframe(data_dict: dict) -> pd.DataFrame:
     }
     df.rename(columns=dict_cols_renaming, inplace=True)
     return df
-
-
-if __name__ == "__main__":
-    data = get_interest_rates_table()
-    print(data)

@@ -19,18 +19,17 @@ def get_fx_api_query(ccy: Currency, start: date, end: date) -> str:
 
 
 def get_fx_rates_for_currency(
-        iso_code: str, start: date, end: date
+        ccy: Currency,
+        start: date,
+        end: date
 ) -> pd.DataFrame:
-
     chunks = split_dates_range_into_smaller_chunks(start=start, end=end)
     list_dfs = []
     for start_, end_ in chunks:
         list_dfs.append(parse_fx_json(
             json_=run_web_api_query(
-                url=get_fx_api_query(
-                    iso_code=iso_code, start=start_, end=end_))
-        ))
+                url=get_fx_api_query(ccy=ccy, start=start_, end=end_))))
     return pd.concat(list_dfs, axis=0).rename(
-        columns={"rate": f"{iso_code}pln_rate"}, inplace=False).reset_index(
+        columns={"rate": f"{ccy.name.lower()}pln_rate"}, inplace=False).reset_index(
         inplace=False, drop=True
     ).copy(deep=True)
