@@ -1,6 +1,6 @@
 from datetime import datetime
 from collections import defaultdict
-import xml.etree.ElementTree as ElementTree
+from xml.etree.ElementTree import ElementTree
 import requests
 import numpy as np
 import pandas as pd
@@ -22,15 +22,17 @@ def get_interest_rates_table() -> pd.DataFrame:
 
 def load_xml() -> str:
     response = requests.get( # noqa
-        "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml")
+        "https://static.nbp.pl/dane/stopy/stopy_procentowe_archiwum.xml",
+        timeout=120
+    )
     response_text = response.text
     return response_text[response_text.find("<?xml version"):]
 
 
 def parse_xml(xml: str):
-    tree_root = ElementTree.fromstring(xml)
+    tree_root = ElementTree.fromstring(xml) # pylint: disable=E1101
     entries = tree_root.findall("pozycje") # noqa
-    data_dict = defaultdict(dict)
+    data_dict: defaultdict = defaultdict(dict)
     for entry in entries:
         rates_list = []
         for el in entry.findall("pozycja"):
@@ -51,7 +53,7 @@ def parse_xml(xml: str):
 
 def data_dict_to_dataframe(data_dict: dict) -> pd.DataFrame:
     df = pd.DataFrame.from_dict(data=data_dict, orient="index")
-    df.index = [datetime.strptime(el, "%Y-%m-%d") for el in df.index]
+    df.index = pd.Index([datetime.strptime(el, "%Y-%m-%d") for el in df.index])
     df.reset_index(inplace=True, drop=False)
     dict_cols_renaming = {
         **RATES_NAMES_DICT, **{"index": "valid_from_date"}

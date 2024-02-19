@@ -1,15 +1,12 @@
 import unittest
-
 import pandas as pd
 import datetime as dt
-
 from pynbp.fx import FxExtractor
 
 
 class TestNbpFxRatesExtractor(unittest.TestCase):
 
     def test_get_fx_rates_for_currency_usd(self):
-        extractor = FxExtractor()
         df = extractor.get_fx_rates_for_currency(
             iso_code="usd",
             start=dt.date(2021, 3, 13),

@@ -17,7 +17,7 @@ maintainers = [
 dependencies = [
   "numpy", "pandas", "urllib3", "requests", "pytz", "certifi",
   "charset-normalizer", "idna", "python-dateutil", "six", "tzdata",
-  "loguru"
+  "loguru", "pytest"
 ]
 
 [build-system]

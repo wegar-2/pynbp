@@ -9,7 +9,8 @@ __all__ = ["get_fx_rates_for_currency"]
 
 def parse_fx_json(json_) -> pd.DataFrame:
     return pd.DataFrame(data=json_["rates"]).rename(
-        columns={"effectiveDate": "date", "mid": "rate"}).drop(columns=["no"], inplace=False)
+        columns={"effectiveDate": "date", "mid": "rate"}
+    ).drop(columns=["no"], inplace=False)
 
 
 def get_fx_api_query(ccy: Currency, start: date, end: date) -> str:
@@ -30,6 +31,5 @@ def get_fx_rates_for_currency(
             json_=run_web_api_query(
                 url=get_fx_api_query(ccy=ccy, start=start_, end=end_))))
     return pd.concat(list_dfs, axis=0).rename(
-        columns={"rate": f"{ccy.name.lower()}pln_rate"}, inplace=False).reset_index(
-        inplace=False, drop=True
-    ).copy(deep=True)
+        columns={"rate": f"{ccy.name.lower()}pln_rate"}, inplace=False
+    ).reset_index(inplace=False, drop=True).copy(deep=True)
