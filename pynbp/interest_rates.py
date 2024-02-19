@@ -1,6 +1,6 @@
 from datetime import datetime
 from collections import defaultdict
-from xml.etree.ElementTree import ElementTree
+import xml.etree.ElementTree as ET
 import requests
 import numpy as np
 import pandas as pd
@@ -30,7 +30,7 @@ def load_xml() -> str:
 
 
 def parse_xml(xml: str):
-    tree_root = ElementTree.fromstring(xml) # pylint: disable=E1101
+    tree_root = ET.fromstring(xml) # pylint: disable=E1101
     entries = tree_root.findall("pozycje") # noqa
     data_dict: defaultdict = defaultdict(dict)
     for entry in entries:
