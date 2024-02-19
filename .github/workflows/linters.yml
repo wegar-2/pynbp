@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
         pip install pylint
         pip install mypy
-        mypy --install-types requirements.txt
+        mypy --install-types --non-interactive
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
