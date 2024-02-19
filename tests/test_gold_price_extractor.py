@@ -1,7 +1,7 @@
 import unittest
 from datetime import date
 
-from pynbp.gold_price_extractor import GoldPriceExtractor
+from pynbp.gold import GoldPriceExtractor
 import pandas as pd
 import numpy as np
 
