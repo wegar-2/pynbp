@@ -1,4 +1,8 @@
 # PyNBP
+[![Flake8 + pytest&coverage](https://github.com/wegar-2/pynbp/actions/workflows/flake8_pytest_coverage.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/flake8_pytest_coverage.yml) 
+[![Linters](https://github.com/wegar-2/pynbp/actions/workflows/linters.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/linters.yml)
+
+
 
 This trivial package provides simple interface (consisting of three functions described below) 
 that allows you to download the selected types of time series made available 
