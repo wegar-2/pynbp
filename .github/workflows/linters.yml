@@ -19,12 +19,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pylint
+        pip install mypy
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
-    - name: Install and analyse the code with mypy
+    - name: Analyse the code with mypy
       run: |
-        pip install mypy
-        mypy . || true
-        mypy --install-types --non-interactive
         mypy $(git ls-files '*.py')
