@@ -4,6 +4,8 @@ from pynbp.common import (split_dates_range_into_smaller_chunks,
                           run_web_api_query)
 from pynbp.constants import allowed_foreign_currencies_iso_codes
 
+__all__ = ["get_fx_rates_for_currency"]
+
 
 def parse_fx_json(json_) -> pd.DataFrame:
     return pd.DataFrame(data=json_["rates"]).rename(
