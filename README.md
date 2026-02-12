@@ -1,5 +1,9 @@
 # PyNBP
 
+![Flake8 Lint Check](https://github.com/wegar-2/pynbp/actions/workflows/flake8-lint.yml/badge.svg)
+![CI](https://github.com/wegar-2/pynbp/actions/workflows/python-tests.yml/badge.svg)
+[![codecov](https://codecov.io/github/wegar-2/pynbp/graph/badge.svg?token=XJY6OWPSPI)](https://codecov.io/github/wegar-2/pycs)
+
 
 This trivial package provides simple interface (consisting of three functions described below) 
 that allows you to download the selected types of time series made available 
