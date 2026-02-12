@@ -1,8 +1,4 @@
 # PyNBP
-[![coverage](https://github.com/wegar-2/pynbp/actions/workflows/coverage.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/coverage.yml)
-[![pylint](https://github.com/wegar-2/pynbp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/pylint.yml)
-[![Flake8](https://github.com/wegar-2/pynbp/actions/workflows/flake8.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/flake8.yml)
-[![mypy](https://github.com/wegar-2/pynbp/actions/workflows/linters.yml/badge.svg)](https://github.com/wegar-2/pynbp/actions/workflows/linters.yml)
 
 
 This trivial package provides simple interface (consisting of three functions described below) 
