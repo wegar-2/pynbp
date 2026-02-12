@@ -12,6 +12,7 @@ __all__ = [
 
 import logging
 
+
 def configure_logging():
     console_handler = logging.StreamHandler()
     formatter = logging.Formatter(
