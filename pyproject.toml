@@ -15,11 +15,12 @@ maintainers = [
   {name = "Artur Wegrzyn", email = "awegrzyn17@gmail.com" }
 ]
 dependencies = [
-  "numpy", "pandas", "urllib3", "requests", "pytz", "certifi",
-  "charset-normalizer", "idna", "python-dateutil", "six", "tzdata",
-  "loguru", "pytest"
+    "pandas",
+    "requests",
+    "python-dateutil",
+    "loguru"
 ]
 
 [build-system]
-requires = ["setuptools>=43.0.0", "wheel"]
+requires = ["setuptools>=69.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
