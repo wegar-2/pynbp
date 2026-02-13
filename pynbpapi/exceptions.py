@@ -13,5 +13,5 @@ class InvalidStartEndDatesException(ValueError):
 
 
 class InvalidCurrencyException(ValueError):
-    def __init__(self, ccy):
-        self.message = f""
+    def __init__(self, ccy: str):
+        self.message = f"Encountered invalid currency: {ccy}"

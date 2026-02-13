@@ -7,7 +7,7 @@ from pynbpapi.common import (
     split_dates_range_into_smaller_chunks, run_web_api_query)
 from pynbpapi.ccy import Ccy
 from pynbpapi.exceptions import (
-    InvalidStartEndDatesException, InvalidCurrencyException)
+    InvalidStartEndDatesException)
 
 __all__ = ["get_fx_rates_for_currency"]
 
@@ -70,4 +70,3 @@ def get_fx_rates(
     _validate_start_end_dates(start, end)
     if isinstance(ccys, str) or isinstance(ccys, Ccy):
         ccys = [ccys]
-
