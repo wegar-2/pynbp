@@ -1,11 +1,11 @@
 from .ccy import Ccy
-from .fx import get_fx_rates_for_currency
+from .fx import get_fx_rate
 from .gold import get_gold_prices
 from .interest_rates import get_interest_rates_table
 
 __all__ = [
     "Ccy",
-    "get_fx_rates_for_currency",
+    "get_fx_rate",
     "get_gold_prices",
     "get_interest_rates_table"
 ]

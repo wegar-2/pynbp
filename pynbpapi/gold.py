@@ -7,7 +7,7 @@ __all__ = ["get_gold_prices"]
 
 
 def _get_gold_prices_url(start: date, end: date) -> str:
-    return (f"http://api.nbp.pl/api/cenyzlota/"
+    return (f"https://api.nbp.pl/api/cenyzlota/"
             f"{start.isoformat()}/{end.isoformat()}/")
 
 

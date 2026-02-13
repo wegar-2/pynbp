@@ -23,7 +23,7 @@ Strictly speaking, the table of historical interest is not provided via NBP's AP
 I provide code snippets illustrating how to get the data below.
 
 
-### Import PyNBP
+### Import py-NBP-API
 
 ```python
 import pynbpapi
@@ -32,9 +32,8 @@ import pynbpapi
 or:
 
 ```python
-from pynbpapi import get_gold_prices, get_interest_rates_table,
-
-get_fx_rates_for_currency
+from pynbpapi import (
+    get_gold_prices, get_interest_rates_table, get_fx_rate)
 ```
 
 ### Average daily FX rates
@@ -42,10 +41,10 @@ To download USDPLN daily average FX rates for the dates range 2018-01-03 to 2021
 (these dates are given in the ISO / %Y-%m-%d format) run:
 
 ```python
-from pynbpapi import get_fx_rates_for_currency
+from pynbpapi import get_fx_rate
 from datetime import date
 
-data = get_fx_rates_for_currency(
+data = get_fx_rate(
     iso_code="usd",
     start=date(2018, 1, 3),
     end=date(2021, 4, 5)
