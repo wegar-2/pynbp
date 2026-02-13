@@ -1,7 +1,7 @@
 from datetime import date
 import numpy as np
 import pandas as pd
-from pynbp.gold import get_gold_prices
+from pynbpapi.gold import get_gold_prices
 
 
 def test_get_gold_prices():

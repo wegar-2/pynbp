@@ -1,7 +1,7 @@
 from enum import Enum, auto
 
 
-class Currency(Enum):
+class Ccy(Enum):
     THB = auto()
     USD = auto()
     AUD = auto()

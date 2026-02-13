@@ -1,13 +1,15 @@
 [project]
-name = "pynbp"
+name = "py-nbp-api"
 version = "1.0.0"
 description = """
-tidy downloading of National Bank of Poland interest rates,
+Tidy downloading of National Bank of Poland interest rates,
 FX rates and gold price data
 """
 readme = "README.md"
 requires-python = ">=3.11"
-keywords = ["NBP", "FX", "PLN"]
+keywords = [
+    "NBP", "FX", "PLN", "gold", "API", "REST-API", "FX-rates", "zloty"
+]
 authors = [
   {name = "Artur Wegrzyn", email = "awegrzyn17@gmail.com" }
 ]

@@ -1,4 +1,4 @@
-# PyNBP
+# py-NBP-API
 
 ![Flake8 Lint Check](https://github.com/wegar-2/pynbp/actions/workflows/flake8-lint.yml/badge.svg)
 ![CI](https://github.com/wegar-2/pynbp/actions/workflows/python-tests.yml/badge.svg)
@@ -7,7 +7,7 @@
 
 This trivial package provides simple interface (consisting of three functions described below) 
 that allows you to download the selected types of time series made available 
-via [National Bank of Poland's API](http://api.nbp.pl/en.html).
+via [National Bank of Poland's REST API](http://api.nbp.pl/en.html).
 
 
 More specifically, the following time series can be downloaded using PyNBP:
@@ -26,13 +26,15 @@ I provide code snippets illustrating how to get the data below.
 ### Import PyNBP
 
 ```python
-import pynbp
+import pynbpapi
 ```
 
 or:
+
 ```python
-from pynbp import get_gold_prices, get_interest_rates_table, \
-    get_fx_rates_for_currency
+from pynbpapi import get_gold_prices, get_interest_rates_table,
+
+get_fx_rates_for_currency
 ```
 
 ### Average daily FX rates
@@ -40,11 +42,12 @@ To download USDPLN daily average FX rates for the dates range 2018-01-03 to 2021
 (these dates are given in the ISO / %Y-%m-%d format) run:
 
 ```python
-from pynbp import get_fx_rates_for_currency
+from pynbpapi import get_fx_rates_for_currency
 from datetime import date
+
 data = get_fx_rates_for_currency(
-    iso_code="usd", 
-    start=date(2018, 1, 3), 
+    iso_code="usd",
+    start=date(2018, 1, 3),
     end=date(2021, 4, 5)
 )
 print(data.head())
@@ -65,8 +68,9 @@ Output:
 To download the table of historical interest rates set by NBP run:
 
 ```python
-from pynbp import get_interest_rates_table
+from pynbpapi import get_interest_rates_table
 from datetime import date
+
 data = get_interest_rates_table()
 print(data.tail())
 ```
@@ -87,8 +91,9 @@ Output:
 To download gold prices in PLN for the dates range 2018-01-03 to 2021-04-05 run:
 
 ```python
-from pynbp import get_gold_prices
+from pynbpapi import get_gold_prices
 from datetime import date
+
 data = get_gold_prices(
     start=date(2018, 1, 3), end=date(2021, 4, 5)
 )

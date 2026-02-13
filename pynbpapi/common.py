@@ -3,6 +3,12 @@ from json import loads
 from dateutil.relativedelta import relativedelta
 from requests import get
 
+__all__ = [
+    "get_default_dates_range",
+    "run_web_api_query",
+    "split_dates_range_into_smaller_chunks"
+]
+
 
 def get_default_dates_range() -> tuple[date, date]:
     date_end = date.today() - timedelta(days=1)
@@ -15,7 +21,9 @@ def run_web_api_query(url: str) -> dict:
 
 
 def split_dates_range_into_smaller_chunks(
-        start: date, end: date) -> list[tuple[date, date]]:
+        start: date,
+        end: date
+) -> list[tuple[date, date]]:
     if (end - start).days >= 367:
         temp = start
         out = []

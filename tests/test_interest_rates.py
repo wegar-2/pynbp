@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from pynbp.interest_rates import get_interest_rates_table
+from pynbpapi.interest_rates import get_interest_rates_table
 
 
 def test_df_get_interest_rates_archive():
