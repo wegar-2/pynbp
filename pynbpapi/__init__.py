@@ -6,6 +6,7 @@ from .interest_rates import get_interest_rates_table
 __all__ = [
     "Ccy",
     "get_fx_rate",
+    "get_fx_rates",
     "get_gold_prices",
     "get_interest_rates_table"
 ]
