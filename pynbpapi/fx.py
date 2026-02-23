@@ -1,6 +1,7 @@
+from datetime import date
+from functools import reduce
 from typing import Literal, Union
 
-from datetime import date
 import pandas as pd
 
 from pynbpapi.common import (
@@ -25,7 +26,7 @@ def _validate_start_end_dates(start: date, end: date) -> None:
 def _validate_ccys(ccys: list) -> None:
     for i in range(len(ccys)):
         ccy = ccys[i]
-        if not isinstance(ccy, str) or not isinstance(ccy, Ccy):
+        if not (isinstance(ccy, str) or isinstance(ccy, Ccy)):
             raise TypeError(
                 f"Encountered ccy of invalid type: {type(ccy)=}"
             )
@@ -68,18 +69,19 @@ def get_fx_rate(
         list_dfs,
         axis=0
     ).rename(columns={
-        "rate": f"{ccy.name.lower()}pln_rate"
+        "rate": f"{ccy.name.lower()}pln"
     }, inplace=False).reset_index(
         inplace=False,
         drop=True
-    ).copy(deep=True)
+    ).copy(deep=True)[["date", f"{ccy.name.lower()}pln"]]
 
 
 def get_fx_rates(
         ccys: Union[str, Ccy, list[Union[str, Ccy]]],
         start: date,
         end: date,
-        fmt: Literal["long", "wide"]
+        fmt: Literal["long", "wide"] = "long",
+        fill_nas: bool = True
 ) -> pd.DataFrame:
     _validate_start_end_dates(start, end)
     if isinstance(ccys, str) or isinstance(ccys, Ccy):
@@ -88,14 +90,21 @@ def get_fx_rates(
 
     datas: list[pd.DataFrame] = []
     for ccy in ccys:
-        datas.append(
-            get_fx_rate(ccy, start, end)
-        )
+        data = get_fx_rate(ccy, start, end)
+        if fmt == "long":
+            pair_name: str = f"{ccy.name.lower()}pln"
+            data["pair"] = pair_name
+            data = data.rename(columns={pair_name: "rate"})
+        datas.append(data)
 
     if fmt == "long":
         return pd.concat(datas, axis=0)
 
-    return pd.DataFrame()
+    data = reduce(lambda x, y: pd.merge(x, y, on="date", how="outer"), datas)
+    if fill_nas:
+        data = data.ffill(axis=0)
+        data = data.bfill(axis=0)
+    return data.sort_values(by="date", ascending=True)
 
 
 def get_nbp_fx_table(

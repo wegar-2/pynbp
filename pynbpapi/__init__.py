@@ -1,5 +1,5 @@
 from .ccy import Ccy
-from .fx import get_fx_rate
+from .fx import get_fx_rate, get_fx_rates
 from .gold import get_gold_prices
 from .interest_rates import get_interest_rates_table
 
