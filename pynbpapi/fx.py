@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from functools import reduce
 from typing import Literal, Union
 
@@ -10,7 +10,7 @@ from pynbpapi.ccy import Ccy
 from pynbpapi.exceptions import (
     InvalidStartEndDatesException, InvalidCurrencyException)
 
-__all__ = ["get_fx_rate", "get_fx_rates"]
+__all__ = ["get_fx_rate", "get_fx_rates", "get_nbp_fx_tables"]
 
 
 def _validate_fx_table_code(code: str) -> None:
@@ -107,12 +107,28 @@ def get_fx_rates(
     return data.sort_values(by="date", ascending=True)
 
 
-def get_nbp_fx_table(
+def get_nbp_fx_tables(
         table: Literal["A", "B", "C"],
-        date_: date
+        start: date,
+        end: date
 ) -> pd.DataFrame:
     _validate_fx_table_code(code=table)
+    _validate_start_end_dates(start, end)
+    tables = run_web_api_query(
+        url=f"https://api.nbp.pl/api/exchangerates/tables/"
+            f"{table}/{start.isoformat()}/{end.isoformat()}/"
+    )
+    parsed_tables: list[pd.DataFrame] = []
+    for table_ in tables:
+        rates_data = pd.DataFrame(table_["rates"])
+        rates_data["table"] = table_["table"]
+        rates_data["no"] = table_["no"]
+        rates_data["date"] = datetime.strptime(
+            table_["effectiveDate"], "%Y-%m-%d").date()
+        parsed_tables.append(rates_data)
 
-    run_web_api_query(url=f"")
-
-    return pd.DataFrame()
+    return pd.concat(
+        parsed_tables, axis=0
+    ).reset_index(drop=True).sort_values(
+        by=["date", "currency"], ascending=[True, True]
+    )

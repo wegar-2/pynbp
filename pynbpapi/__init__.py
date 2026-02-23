@@ -1,5 +1,5 @@
 from .ccy import Ccy
-from .fx import get_fx_rate, get_fx_rates
+from .fx import get_fx_rate, get_fx_rates, get_nbp_fx_tables
 from .gold import get_gold_prices
 from .interest_rates import get_interest_rates_table
 
@@ -8,7 +8,8 @@ __all__ = [
     "get_fx_rate",
     "get_fx_rates",
     "get_gold_prices",
-    "get_interest_rates_table"
+    "get_interest_rates_table",
+    "get_nbp_fx_tables",
 ]
 
 import logging
