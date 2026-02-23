@@ -13,9 +13,9 @@ from pynbpapi.exceptions import (
 __all__ = ["get_fx_rate", "get_fx_rates"]
 
 
-def _validate_fx_table_code(code: str):
+def _validate_fx_table_code(code: str) -> None:
     if code not in ["A", "B", "C"]:
-        raise ValueError("")
+        raise ValueError(f"Invalid NBP code value {code}")
 
 
 def _validate_start_end_dates(start: date, end: date) -> None:
@@ -112,5 +112,7 @@ def get_nbp_fx_table(
         date_: date
 ) -> pd.DataFrame:
     _validate_fx_table_code(code=table)
+
+    run_web_api_query(url=f"")
 
     return pd.DataFrame()
