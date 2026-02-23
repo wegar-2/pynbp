@@ -55,6 +55,9 @@ def get_fx_rate(
         start: date,
         end: date
 ) -> pd.DataFrame:
+    _validate_ccys(ccys=[ccy.upper() if isinstance(ccy, str) else ccy])
+    if not isinstance(ccy, Ccy):
+        ccy = Ccy(ccy.upper())
     chunks = split_dates_range_into_smaller_chunks(start=start, end=end)
     list_dfs = []
     for start_, end_ in chunks:
@@ -129,6 +132,4 @@ def get_nbp_fx_tables(
 
     return pd.concat(
         parsed_tables, axis=0
-    ).reset_index(drop=True).sort_values(
-        by=["date", "currency"], ascending=[True, True]
-    )
+    ).reset_index(drop=True)
