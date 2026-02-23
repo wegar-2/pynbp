@@ -1,5 +1,5 @@
 [project]
-name = "py-nbp-api"
+name = "pynbpapi"
 version = "1.0.0"
 description = """
 Tidy downloading of National Bank of Poland interest rates,
