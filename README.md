@@ -1,4 +1,4 @@
-# py-NBP-API
+# pynbpapi
 
 ![Flake8 Lint Check](https://github.com/wegar-2/pynbp/actions/workflows/flake8-lint.yml/badge.svg)
 ![CI](https://github.com/wegar-2/pynbp/actions/workflows/python-tests.yml/badge.svg)
